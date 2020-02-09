@@ -41,7 +41,25 @@ def calculate_1(b):
 the equation without bracket in string-type 
 into its final result'''
 
-equation_input=input('type your equation: ')
+while True:
+    equation_input=input('type your equation: ')
+    if '/-(' in equation_input or '/+(' in equation_input:
+        print("\tError: Please close the formula in denominator \
+completely with the brackets\n\t\
+Advise: Problem near index {} of your formula".format(equation_input.index('/-(')))
+        continue
+    elif equation_input.count('(') != equation_input.count(')'):
+        print('\tError: Number of open brackets must \
+be equal to number of close brackets\n\t\
+Advise: Close your formulas carefully')
+        continue
+    else:
+        break
+
+'''The loop above is to test the string 
+input with correct mathematic systax, 
+so the steps below work fluently'''
+
 eval_test=eval(equation_input)
 er=equation_input
 er=er.replace('-(','-1*(')
